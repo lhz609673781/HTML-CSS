@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition--参与过渡的属性和延迟的时间</title>
+	<style type="text/css">
+		div{
+			width: 400px;
+			height: 400px;
+			background-color: red;
+			margin:0px auto;
+			transition:background-color 2s,height 2s 2s,width 2s 4s;
+			-webkit-transition:background-color 2s,height 2s 2s,width 2s 4s;
+		}
+		div:hover{
+			width: 800px;
+			height: 800px;
+			background-color: #60f; 
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

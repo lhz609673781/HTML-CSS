@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition--无限循环过渡事件</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			transition: width 1s;
+			-webkit-transition: width 1s;
+			-moz-transition: width 1s;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">1111</div>
+	<script type="text/javascript">
+		var box=document.getElementsByClassName("box")[0];
+		box.onclick=function(){
+			this.style.width=this.offsetWidth+100+"px";
+			this.style.height=this.offsetHeigth+100+"px";
+			addEnd(box,end);
+		}
+
+		function addEnd(obj,fn){
+			obj.addEventListener("webkitTransitionEnd",fn,false);//兼容谷歌的循环过渡事件
+			obj.addEventListener("TransitionEnd",fn,false);//兼容火狐的循环过渡事件
+		}
+
+		function end(){
+			this.style.width=this.offsetWidth+100+"px";//必须要加上之前的长度
+			removeEnd(this,end);
+		}
+
+		function removeEnd(obj,fn){
+			obj.removeEventListener("webkitTransitionEnd",fn,false);//阻止循环事件
+			obj.removeEventListener("TransitionEnd",fn,false);
+		}
+	</script>
+</body>
+</html>

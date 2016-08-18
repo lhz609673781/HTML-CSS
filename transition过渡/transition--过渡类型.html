@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition--过渡类型</title>
+	<style type="text/css">
+		p{
+			width: 150px;
+			height: 40px;
+			margin: 20px;
+			background-color:pink; 
+		}
+		#p1:hover{
+			width: 100%;
+			-webkit-transition:width 3s linear;
+		}
+		#p2:hover{
+			width: 100%;
+			-webkit-transition:width 3s ease;
+		}
+		#p3:hover{
+			width: 100%;
+			-webkit-transition:width 3s ease-in;
+		}
+		#p4:hover{
+			width: 100%;
+			-webkit-transition:width 3s ease-out;
+		}
+		#p5:hover{
+			width: 100%;
+			-webkit-transition:width 3s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<p id="p1">linear 线性匀速</p>
+	<p id="p2">ease 由慢到快再到慢</p>
+	<p id="p3">ease-in 有慢到快</p>
+	<p id="p4">ease-out 由快到慢</p>
+	<p id="p5">ease-in-out 由慢到快再到慢</p>
+	
+</body>
+</html>

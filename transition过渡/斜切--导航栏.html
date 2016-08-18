@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斜切--导航栏</title>
+	<style type="text/css">
+		ul{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		li{
+			float: left;
+			width: 100px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			background-color: pink;
+			border:1px solid #fff;
+			-webkit-transform:skewX(30deg);/*文字也被斜切了，所以在a标签里斜切回来*/
+		}
+		a{
+			display: block;
+			text-decoration: none;
+			-webkit-transform:skewX(-30deg);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="">aaaa</a></li>
+		<li><a href="">bbbb</a></li>
+		<li><a href="">cccc</a></li>
+		<li><a href="">dddd</a></li>
+	</ul>
+</body>
+</html>

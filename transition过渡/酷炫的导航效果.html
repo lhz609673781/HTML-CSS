@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>酷炫的导航效果</title>
+	<style type="text/css">
+		body{
+			background: #f9f9f9;
+		}
+		#menu{
+			width: 50px;
+			height: 50px;
+			position: fixed;
+			left: 50%;
+			top:50%;
+		}
+		#menu_list{
+			position:relative;
+			width: 42px;
+			height: 42px;
+		}
+		#menu_list img{
+			position:absolute;
+			left: 0px;
+			top: 0px;
+		}
+		#home{
+			width: 50px;
+			height: 50px;
+			background: url(images/home.png) no-repeat;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			-webkit-transition:1s;
+		}
+	</style>
+</head>
+<body>
+	<div id="menu">
+		<div id="menu_list">
+			<img src="images/clos.png">
+			<img src="images/full.png">
+			<img src="images/open.png">
+			<img src="images/prev.png">
+			<img src="images/refresh.png">
+		</div>
+		<div id="home"></div>
+	</div>
+	<script type="text/javascript">
+		var oHome=document.getElementById("home");
+		var aImg=document.getElementById("menu_list").getElementsByTagName("img");
+		var rTure=true;
+		var rDis=150;//飞出去的半径
+		oHome.onclick=function(){
+			this.style.webkitTransform="rotate(-360deg)";
+			if(rTure){ //为真的时候飞出去
+				for(var i=0;i<aImg.length;i++){
+					aImg[i].style.webkitTransition="0.5s "+i*100+"ms";//设置出来的图标的过渡时间和延迟时间
+					var olt=ToLT(rDis,90/4*i);  //飞出来正好构成四个角，根据角度求距左距右的值
+					aImg[i].style.left=olt.l+"px";
+					aImg[i].style.top=olt.t+"px";
+					aImg[i].style.WebkitTransform="rotate(-360deg)";
+				}
+				
+			}else{
+				this.style.webkitTransform="rotate(360deg)";
+				for(var i=0;i<aImg.length;i++){
+					aImg[i].style.webkitTransition="0.5s "+(aImg.length-i-1)*100+"ms";
+					aImg[i].style.left="0px";
+					aImg[i].style.top="0px";
+					aImg[i].style.WebkitTransform="rotate(0deg)";
+				}
+			}
+			rTure=!rTure;
+		}
+
+		//已经知道斜边和角度，求直角边，用sin cos
+		function ToLT(rdis,iDeg){
+			var oLeft=Math.round(Math.sin(iDeg/180*Math.PI)*rdis);///180*Math.PI即为单位
+			var oTop=Math.round(Math.cos(iDeg/180*Math.PI)*rdis);
+			return {l:oLeft,t:oTop};
+		}
+	</script>
+</body>
+</html>
